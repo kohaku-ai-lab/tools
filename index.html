@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>こはくのAI定時退社ラボ｜無料時短ツール＆公式リンク集</title>
+  <style>
+    :root {
+      --bg: #0b132b;
+      --bg-card: #131f3d;
+      --bg-soft: #1b2a4e;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --gold: #facc15;
+      --red: #ef4444;
+      --green: #10b981;
+      --border: rgba(56, 189, 248, 0.28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "BIZ UDPGothic", "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: radial-gradient(circle at top right, #1d356e 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1020px; margin: 0 auto; padding: 24px 18px 64px; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: linear-gradient(135deg, rgba(19,31,61,0.95), rgba(30,58,138,0.65));
+      border: 2px solid var(--border);
+      border-radius: 22px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+    .hero img {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+    .hero h1 { margin: 0 0 6px; font-size: 24px; line-height: 1.3; }
+    .hero p { margin: 0; color: #cbd5e1; font-size: 14px; }
+
+    /* Section Title */
+    .sec-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 34px 0 14px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .sec-title span.tag {
+      background: var(--red);
+      color: #fff;
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .tab-btn {
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: var(--bg-card);
+      color: #cbd5e1;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.15s ease;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #0f172a;
+      border-color: var(--accent);
+    }
+
+    /* Tool Panel */
+    .panel {
+      display: none;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+    }
+    .panel.active { display: block; }
+    .panel h2 { margin: 0 0 6px; font-size: 18px; color: var(--gold); }
+    .panel p.desc { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+
+    label { display: block; font-size: 13px; font-weight: 700; margin: 10px 0 6px; color: #e2e8f0; }
+    input, select, textarea {
+      width: 100%;
+      background: #0b132b;
+      color: var(--text);
+      border: 1.5px solid #334155;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .btn {
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      background: var(--bg-soft);
+      color: var(--text);
+      border: 1px solid var(--border);
+      transition: transform 0.1s ease, opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.92; }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--accent); color: #0f172a; border-color: var(--accent); }
+    .btn-success { background: var(--green); color: #0f172a; border-color: var(--green); }
+    .btn-gold { background: var(--gold); color: #0f172a; border-color: var(--gold); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 12px 0;
+    }
+    .stat-box {
+      background: #0b132b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+    .stat-box .val { font-size: 20px; font-weight: 800; color: var(--gold); }
+    .stat-box .lbl { font-size: 12px; color: var(--muted); }
+
+    /* Cards Grid */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .card .kicker { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.04em; }
+    .card h3 { margin: 6px 0; font-size: 16px; }
+    .card p { margin: 0 0 14px; font-size: 13px; color: var(--muted); }
+    .card .cta-link {
+      display: inline-block;
+      text-align: center;
+      padding: 9px 14px;
+      border-radius: 10px;
+      background: var(--bg-soft);
+      border: 1px solid var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--accent);
+    }
+    .card .cta-link.gold { background: var(--gold); color: #0f172a; border-color: var(--gold); }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: #0f172a;
+      font-weight: 800;
+      padding: 10px 20px;
+      border-radius: 999px;
+      display: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      z-index: 99;
+    }
+    footer {
+      margin-top: 44px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    @media (max-width: 680px) {
+      .hero { flex-direction: column; text-align: center; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <img src="./kohaku_icon.png" alt="藍月こはく" />
+      <div>
+        <span class="hero-badge">完全無料・登録不要・ブラウザ完結</span>
+        <h1>こはくのAI定時退社ラボ｜時短ツール＆公式リンク集</h1>
+        <p>毎日の面倒なコピペ・集計・文章作成を1クリックで片付けて、定時で帰ろう！データはすべてあなたのブラウザ内だけで処理されるので安全です。</p>
+      </div>
+    </section>
+
+    <div class="sec-title">
+      <span class="tag">無料Webツール 3選</span>
+      <span>今すぐ使える時短ツール</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('t1', this)">① 定型プロンプト生成</button>
+      <button class="tab-btn" onclick="switchTab('t2', this)">② コピペ一括整形</button>
+      <button class="tab-btn" onclick="switchTab('t3', this)">③ 雑メモ瞬間集計＆CSV</button>
+    </div>
+
+    <!-- Tool 1 -->
+    <section id="t1" class="panel active">
+      <h2>① 1クリック定型プロンプト＆文章ジェネレーター</h2>
+      <p class="desc">用途を選んでキーワードを入れるだけ。そのままChatGPT・Gemini・メールに貼れるプロンプトを一瞬で作成します。</p>
+      <div class="grid-2">
+        <div>
+          <label>用途テンプレート</label>
+          <select id="t1-type" onchange="buildPrompt()">
+            <option value="reply">メール・チャット返信を30秒で作成</option>
+            <option value="minutes">会議メモから議事録＆タスク抽出</option>
+            <option value="summary">長い資料・記事を3行で要点整理</option>
+            <option value="apology">角が立たない丁寧な断り・調整メール</option>
+          </select>
+        </div>
+        <div>
+          <label>相手・トーン</label>
+          <select id="t1-tone" onchange="buildPrompt()">
+            <option value="丁寧なビジネス敬語（社外・上司向け）">丁寧なビジネス敬語（社外・上司向け）</option>
+            <option value="簡潔で柔らかい敬語（社内チャット向け）">簡潔で柔らかい敬語（社内チャット向け）</option>
+            <option value="箇条書き中心の超簡潔スタイル">箇条書き中心の超簡潔スタイル</option>
+          </select>
+        </div>
+      </div>
+      <label>伝えたい要点・元メモ（雑な箇条書きでOK）</label>
+      <textarea id="t1-input" oninput="buildPrompt()" placeholder="例：明日の打ち合わせ15時に変更したい。資料は今夜中に送る。お詫びと確認依頼。"></textarea>
+      <label>生成結果（そのままコピーして使えます）</label>
+      <textarea id="t1-output" readonly></textarea>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="copyText('t1-output')">📋 ワンクリックでコピー</button>
+        <button class="btn" onclick="document.getElementById('t1-input').value=''; buildPrompt();">クリア</button>
+      </div>
+    </section>
+
+    <!-- Tool 2 -->
+    <section id="t2" class="panel">
+      <h2>② コピペ一瞬！テキスト一括クリーニング＆整形ツール</h2>
+      <p class="desc">PDFやWebからコピペしたガタガタの文章・重複行・余計な空白をボタン1つで綺麗に整形します。</p>
+      <label>元のテキストを貼り付け</label>
+      <textarea id="t2-text" placeholder="ここにPDFやチャットからコピペした雑な文章を貼り付けてください..."></textarea>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="cleanText('unwrap')">不要な改行をすべてつなぐ</button>
+        <button class="btn btn-primary" onclick="cleanText('trim')">空行・前後スペースを削除</button>
+        <button class="btn btn-primary" onclick="cleanText('dedupe')">重複している行を削除</button>
+        <button class="btn btn-primary" onclick="cleanText('bullet')">各行を「・」箇条書き化</button>
+        <button class="btn btn-gold" onclick="cleanText('halfwidth')">全角英数字・空白を半角化</button>
+        <button class="btn btn-success" onclick="copyText('t2-text')">📋 整形結果をコピー</button>
+      </div>
+    </section>
+
+    <!-- Tool 3 -->
+    <section id="t3" class="panel">
+      <h2>③ 雑メモ・表データの瞬間集計＆Excel用TSV変換</h2>
+      <p class="desc">金額や個数が混ざったメモを貼るだけで、合計・平均・最大/最小を自動計算。Excelにそのまま貼れる表変換もできます。</p>
+      <label>数値やメモを貼り付け（例：交通費 1,280円 / ランチ 950 / カフェ 480円）</label>
+      <textarea id="t3-input" oninput="calcStats()" placeholder="例：&#10;交通費 1,280円&#10;備品 3,400円&#10;ランチ 950円"></textarea>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="val" id="st-count">0</div><div class="lbl">抽出数値数</div></div>
+        <div class="stat-box"><div class="val" id="st-sum">0</div><div class="lbl">合計</div></div>
+        <div class="stat-box"><div class="val" id="st-avg">0</div><div class="lbl">平均</div></div>
+        <div class="stat-box"><div class="val" id="st-max">0</div><div class="lbl">最大値</div></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="toTable('tsv')">Excel貼付用（タブ区切り）に変換</button>
+        <button class="btn btn-primary" onclick="toTable('csv')">CSV（カンマ区切り）に変換</button>
+        <button class="btn btn-success" onclick="copyText('t3-output')">📋 変換結果をコピー</button>
+      </div>
+      <textarea id="t3-output" readonly placeholder="ここに表変換の結果が出ます"></textarea>
+    </section>
+
+    <!-- Apps -->
+    <div class="sec-title">
+      <span class="tag">自社開発アプリ</span>
+      <span>業務効率化・便利Webアプリ</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div>
+          <div class="kicker">WEB APP #01</div>
+          <h3>ScopeGuard</h3>
+          <p>プロジェクトや業務のスコープ・要件を整理して、手戻りやムダな作業を防ぐ便利Webアプリ。</p>
+        </div>
+        <a class="cta-link" href="https://scopeguard-web-production.up.railway.app" target="_blank" rel="noopener">アプリを開く →</a>
+      </div>
+      <div class="card">
+        <div>
+          <div class="kicker">WEB APP #02</div>
+          <h3>SellSnap</h3>
+          <p>出品・販売まわりの面倒な作業をサクッと効率化できるサポートWebアプリ。</p>
+        </div>
+        <a class="cta-link" href="https://sellsnap-web-production.up.railway.app" target="_blank" rel="noopener">アプリを開く →</a>
+      </div>
+    </div>
+
+    <!-- Books / Stickers / SNS -->
+    <div class="sec-title">
+      <span class="tag">書籍・スタンプ・SNS</span>
+      <span>藍月こはく 公式コンテンツ</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div>
+          <div class="kicker">KINDLE BOOK #001</div>
+          <h3>AI「半自動」仕事術 &amp; 副業術</h3>
+          <p>毎日のルーチンをAIに任せて定時退社＆副業時間を作る実践ガイド。</p>
+        </div>
+        <a class="cta-link gold" href="https://www.amazon.co.jp/dp/B0HRZPSKKS" target="_blank" rel="noopener">Amazonで見る →</a>
+      </div>
+      <div class="card">
+        <div>
+          <div class="kicker">KINDLE BOOK #002</div>
+          <h3>コピペで仕事が秒で終わる！AI「超時短」プロンプト大全</h3>
+          <p>そのまま貼るだけで議事録・メール・企画書が数分で終わるプロンプト集。</p>
+        </div>
+        <a class="cta-link gold" href="https://www.amazon.co.jp/dp/B0HRZXZZC3" target="_blank" rel="noopener">Amazonで見る →</a>
+      </div>
+      <div class="card">
+        <div>
+          <div class="kicker">LINE STICKERS</div>
+          <h3>藍月こはく 公式LINEスタンプ一覧</h3>
+          <p>毎日使える癒し系・キュート系＆あけおめスタンプを公開中！</p>
+        </div>
+        <a class="cta-link" href="https://line.me/S/shop/sticker/author/5756393" target="_blank" rel="noopener">LINE STOREへ →</a>
+      </div>
+      <div class="card">
+        <div>
+          <div class="kicker">YOUTUBE &amp; X</div>
+          <h3>こはくのAI定時退社ラボ</h3>
+          <p>毎日ショート動画でAI時短術を配信中。欲しいツールのリクエストも募集中！</p>
+        </div>
+        <div class="btn-row" style="margin:0;">
+          <a class="cta-link" style="flex:1;" href="https://www.youtube.com/channel/UCZVli0BGb5g9-XIRWCPY62A" target="_blank" rel="noopener">YouTube</a>
+          <a class="cta-link" style="flex:1;" href="https://x.com/kohaku_Ai_labs" target="_blank" rel="noopener">X (@kohaku_Ai_labs)</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 こはくのAI定時退社ラボ / 藍月こはく
+    </footer>
+  </div>
+
+  <div id="toast" class="toast">コピーしました！</div>
+
+  <script>
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.style.display = "block";
+      setTimeout(() => { el.style.display = "none"; }, 1800);
+    }
+
+    function switchTab(id, btn) {
+      document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      btn.classList.add("active");
+    }
+
+    function copyText(id) {
+      const val = document.getElementById(id).value;
+      if (!val.trim()) { showToast("コピーする内容が空です"); return; }
+      navigator.clipboard.writeText(val).then(() => showToast("クリップボードにコピーしました！"));
+    }
+
+    function buildPrompt() {
+      const type = document.getElementById("t1-type").value;
+      const tone = document.getElementById("t1-tone").value;
+      const input = document.getElementById("t1-input").value.trim() || "（ここに要点や元メモを入力）";
+      const templates = {
+        reply: `以下のメモをもとに、すぐ送信できる返信文を作成してください。\n【トーン】${tone}\n【条件】結論ファーストで簡潔に、誤解のない表現にすること。\n\n【元メモ】\n${input}`,
+        minutes: `以下の会議メモを整理し、①決定事項 ②ネクストアクション（担当者・期限欄付き）③要点まとめ の3部構成で議事録を作成してください。\n【トーン】${tone}\n\n【会議メモ】\n${input}`,
+        summary: `以下の文章を、忙しい人でも10秒で理解できるように「3行の要約」と「重要な数値・結論」に整理してください。\n【トーン】${tone}\n\n【対象文章】\n${input}`,
+        apology: `以下の内容について、相手の気分を害さず角が立たない丁寧な調整・お断りメールを作成してください。代替案も1つ添えてください。\n【トーン】${tone}\n\n【状況メモ】\n${input}`
+      };
+      document.getElementById("t1-output").value = templates[type];
+    }
+
+    function cleanText(mode) {
+      const el = document.getElementById("t2-text");
+      let txt = el.value;
+      if (mode === "unwrap") {
+        txt = txt.replace(/\r?\n+/g, " ").replace(/ {2,}/g, " ").trim();
+      } else if (mode === "trim") {
+        txt = txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean).join("\n");
+      } else if (mode === "dedupe") {
+        const seen = new Set();
+        txt = txt.split(/\r?\n/).filter(l => {
+          const k = l.trim();
+          if (!k || seen.has(k)) return false;
+          seen.add(k);
+          return true;
+        }).join("\n");
+      } else if (mode === "bullet") {
+        txt = txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(l => l.startsWith("・") ? l : `・${l}`).join("\n");
+      } else if (mode === "halfwidth") {
+        txt = txt.replace(/[Ａ-Ｚａ-ｚ０-９]/g, s => String.fromCharCode(s.charCodeAt(0) - 0xFEE0)).replace(/　/g, " ");
+      }
+      el.value = txt;
+      showToast("整形しました！");
+    }
+
+    function calcStats() {
+      const txt = document.getElementById("t3-input").value;
+      const normalized = txt.replace(/,/g, "");
+      const matches = normalized.match(/-?\d+(?:\.\d+)?/g) || [];
+      const nums = matches.map(Number).filter(n => !Number.isNaN(n));
+      if (!nums.length) {
+        document.getElementById("st-count").textContent = "0";
+        document.getElementById("st-sum").textContent = "0";
+        document.getElementById("st-avg").textContent = "0";
+        document.getElementById("st-max").textContent = "0";
+        return;
+      }
+      const sum = nums.reduce((a, b) => a + b, 0);
+      document.getElementById("st-count").textContent = nums.length.toLocaleString();
+      document.getElementById("st-sum").textContent = Number(sum.toFixed(2)).toLocaleString();
+      document.getElementById("st-avg").textContent = Number((sum / nums.length).toFixed(2)).toLocaleString();
+      document.getElementById("st-max").textContent = Math.max(...nums).toLocaleString();
+    }
+
+    function toTable(mode) {
+      const txt = document.getElementById("t3-input").value.trim();
+      if (!txt) { showToast("元データを入力してください"); return; }
+      const sep = mode === "tsv" ? "\t" : ",";
+      const lines = txt.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const rows = lines.map(l => l.split(/[\s,、]+/).map(c => mode === "csv" && c.includes(",") ? `"${c}"` : c).join(sep));
+      document.getElementById("t3-output").value = rows.join("\n");
+      showToast(mode.toUpperCase() + " に変換しました！");
+    }
+
+    buildPrompt();
+  </script>
+</body>
+</html>
